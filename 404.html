@@ -4,7 +4,7 @@
 <!--
 //パラメータ
 var params = location.href.split("status/")[1];
-console.log(params);
+//console.log(params);
 var path="https://twitter.com/i/status/";meta_
 var url;
 if(typeof(params) != "undefined") { 
@@ -13,7 +13,7 @@ if(typeof(params) != "undefined") {
 var meta_str = "<link rel='canonical' href=" + url + ">";
 $("head").prepend(meta_str);
 location.href=url;
-console.log(url);
+//console.log(url);
 // -->
 </script>  
 </head>
