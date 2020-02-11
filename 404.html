@@ -9,8 +9,9 @@ var path="https://twitter.com/i/status/";
 if(typeof(params) != "undefined") { 
   path = path + params;
 }
-var meta_str = "<meta http-equiv='refresh' content='0; URL=" + path + "'>";
-$("head").prepend(meta_str);
+//var meta_str = "<meta http-equiv='refresh' content='0; URL=" + path + "'>";
+//$("head").prepend(meta_str);
+location.href=path;
 // -->
 </script>  
 </head>
