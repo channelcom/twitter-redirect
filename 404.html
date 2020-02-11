@@ -1,10 +1,11 @@
 <!doctype html><html><head><!-- <meta http-equiv="refresh" content="5; url=https://twitter.com/"> -->
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript">
 <!--
 //パラメータ
 var params = location.href.split("status/")[1];
 console.log(params);
-var path="https://twitter.com";
+var path="https://twitter.com/i/status";
 if(typeof(params) != "undefined") { 
   path = path + params;
 }
