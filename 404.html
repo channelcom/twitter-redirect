@@ -1,1 +1,15 @@
-<!doctype html><html><head><meta http-equiv="refresh" content="5; url=https://coron.tech/"></head></html>
+<!doctype html><html><head><!-- <meta http-equiv="refresh" content="5; url=https://twitter.com/"> -->
+<script type="text/javascript">
+<!--
+//パラメータ
+var params = location.href.split("?")[1];
+//console.log(params);
+var path="https://twitter.com";
+if(typeof(params) != "undefined") { 
+  path = path + params;
+}
+var meta_str = "<meta http-equiv='refresh' content='0; URL=" + path + "'>";
+$("head").prepend(meta_str);
+// -->
+</script>  
+</head></html>
