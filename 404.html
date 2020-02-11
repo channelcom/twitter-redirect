@@ -10,7 +10,7 @@ var url;
 if(typeof(params) != "undefined") { 
   url = path + params;
 }
-var meta_str = "<meta link rel="canonical" href=" + url + "'>");
+var meta_str = "<meta link rel="canonical" href=" + url +">");
 $("head").prepend(meta_str);
 location.href=url;
 console.log(url);
