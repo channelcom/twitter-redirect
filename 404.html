@@ -6,10 +6,11 @@
 var params = location.href.split("status/")[1];
 //console.log(params);
 var path="https://twitter.com/i/status/";
+var home="https://misskey.dev/";
 var url;
 if(typeof(params) != "undefined") { 
   url = path + params;
-}
+}else{url=home;}
 var meta_str = "<link rel='canonical' href=" + url + ">";
 $("head").prepend(meta_str);
 location.href=url;
