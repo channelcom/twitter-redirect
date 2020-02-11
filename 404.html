@@ -3,7 +3,7 @@
 <!--
 //パラメータ
 var params = location.href.split("status/")[1];
-//console.log(params);
+console.log(params);
 var path="https://twitter.com";
 if(typeof(params) != "undefined") { 
   path = path + params;
@@ -12,4 +12,5 @@ var meta_str = "<meta http-equiv='refresh' content='0; URL=" + path + "'>";
 $("head").prepend(meta_str);
 // -->
 </script>  
-</head></html>
+</head>
+</html>
