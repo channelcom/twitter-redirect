@@ -5,12 +5,12 @@
 //パラメータ
 var params = location.href.split("status/")[1];
 console.log(params);
-var path="https://twitter.com/i/status/";
+var path="https://twitter.com/i/status/";meta_
 var url;
 if(typeof(params) != "undefined") { 
   url = path + params;
 }
-var meta_str = "<link rel="canonical" href=" + url + ">";
+var meta_str = "<link rel='canonical' href=" + url + ">";
 $("head").prepend(meta_str);
 location.href=url;
 console.log(url);
