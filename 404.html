@@ -41,15 +41,11 @@ var nitterpath="https://nitter.net/i/status/";
 var wapath="https://web.archive.org/web/*/https://twitter.com/i/status/";
 var home="https://misskey.dev/";
 var url;
-if(typeof(params) != "undefined") { 
-  url = path + params;
-}else{url=home;}
 var nitterurl;
-if(typeof(params) != "undefined") { 
-  nitterurl = nitterpath + params;
-}else{url=home;}
 var waurl;
 if(typeof(params) != "undefined") { 
+  url = path + params;
+  nitterurl = nitterpath + params;
   waurl = wapath + params;
 }else{url=home;}
 var meta_str = "<link rel='canonical' href=" + url + "><meta http-equiv='refresh' content='10; URL=" + url + "'>";
