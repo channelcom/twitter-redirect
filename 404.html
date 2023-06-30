@@ -15,14 +15,14 @@ if(typeof(params) != "undefined") {
 }else{url=home;}
 var nitterurl;
 if(typeof(params) != "undefined") { 
-  url = nitterpath + params;
+  nitterurl = nitterpath + params;
 }else{url=home;}
 var waurl;
 if(typeof(params) != "undefined") { 
-  url = wapath + params;
+  waurl = wapath + params;
 }else{url=home;}
-var meta_str = "<link rel='canonical' href=" + url + "><meta http-equiv='refresh' content='10; URL=" + url + "'>";
-var body_str = "<h2>10秒後にTwitter移動します。Twitterを利用していない場合はNitterまたはWebArchiveをご利用ください。</h2><ul><li><a href=" + url + ">Twitterで開く</a></li><li><a href=" + nitterurl + ">Nitterで開く</a></li><li><a href=" + waurl + ">WebArchiveで確認する</a></li></ul>";
+var meta_str = "<link rel="preload" as="style" type="text/css" href="https://ちゃんねる.com/c.css" onload="this.rel='stylesheet'"><link rel='canonical' href=" + url + "><meta http-equiv='refresh' content='10; URL=" + url + "'>";
+var body_str = "<h2>10秒後にTwitterに移動します。Twitterを利用していない場合はNitterまたはWebArchiveをご利用ください。</h2><ul><li><a href=" + url + ">Twitterで開く</a></li><li><a href=" + nitterurl + ">Nitterで開く</a></li><li><a href=" + waurl + ">WebArchiveで確認する</a></li></ul>";
 //location.href=url;
 $("head").prepend(meta_str);
 $("body").prepend(body_str);
