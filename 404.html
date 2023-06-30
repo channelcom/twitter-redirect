@@ -53,7 +53,7 @@ if(typeof(params) != "undefined") {
   waurl = wapath + params;
 }else{url=home;}
 var meta_str = "<link rel='canonical' href=" + url + "><meta http-equiv='refresh' content='10; URL=" + url + "'>";
-var body_str = "<h2>10秒後に自動的にTwitterで開きます。Twitterを利用していない場合はNitterまたはWebArchiveをご利用ください。</h2><ul><li><a href=" + url + ">Twitterで開く</a></li><li><a href=" + nitterurl + ">Nitterで開く</a></li><li><a href=" + waurl + ">WebArchiveで確認する</a></li></ul><br>Powered&nbsp;by&nbsp;<a href="https://misskey.dev/" target="_blank">misskey.dev</a>";
+var body_str = "<h2>10秒後に自動的にTwitterで開きます。Twitterを利用していない場合はNitterまたはWebArchiveをご利用ください。</h2><ul><li><a href=" + url + " target="_blank">Twitterで開く</a></li><li><a href=" + nitterurl + " target="_blank">Nitterで開く</a></li><li><a href=" + waurl + " target="_blank">WebArchiveで確認する</a></li></ul><br>Powered&nbsp;by&nbsp;<a href=" + home + " target="_blank">misskey.dev</a>";
 //location.href=url;
 $("head").prepend(meta_str);
 $("body").prepend(body_str);
