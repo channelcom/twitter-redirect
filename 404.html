@@ -1,4 +1,5 @@
 <!doctype html><html><head><!-- <meta http-equiv="refresh" content="5; url=https://twitter.com/"> -->
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <style type="text/css">body{font-family:"Yu Gothic",Meiryo;background-color:#0f0f0f;color:#ffffff;}
 .o{margin:0 auto;width:100%;max-width:720px;}
 #home .o{max-width:1920px;}
@@ -37,7 +38,7 @@ img{max-width:100%;height:auto;overflow:hidden;}</style>
 var params = location.href.split("status/")[1];
 //console.log(params);
 var path="https://twitter.com/i/status/";
-var nitterpath="https://nitter.net/i/status/";
+/**var nitterpath="https://nitter.net/i/status/";**/
 var wapath="https://web.archive.org/web/*/https://twitter.com/i/status/";
 var home="https://misskey.dev/";
 var url;
@@ -49,7 +50,7 @@ if(typeof(params) != "undefined") {
   waurl = wapath + params;
 }else{url=home;}
 var meta_str = "<link rel='canonical' href=" + url + "><meta http-equiv='refresh' content='10; URL=" + url + "'>";
-var body_str = "<h2>10秒後に自動的にTwitterで開きます。Twitterを利用していない場合はNitterまたはWebArchiveをご利用ください。</h2><ul><li><a href=" + url + ">Twitterで開く</a></li><li><a href=" + nitterurl + ">Nitterで開く</a></li><li><a href=" + waurl + ">WebArchiveで確認する</a></li></ul>";
+var body_str = "<h2>10秒後に自動的にTwitterで開きます。Twitterを利用していない場合はWebArchiveをご利用ください。</h2><ul><li><a href=" + url + ">Twitterで開く</a></li><li><a href=" + waurl + ">WebArchiveで確認する</a></li></ul>";
 //location.href=url;
 $("head").prepend(meta_str);
 $("body").prepend(body_str);
