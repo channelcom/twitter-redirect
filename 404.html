@@ -51,14 +51,14 @@ if(typeof(params) != "undefined") {
 }else{url=home;}
 var meta_str = "<link rel='canonical' href=" + url + "><meta http-equiv='refresh' content='30; URL=" + url + "'>";
 var body_str = "<h2>30秒後に自動的にTwitterで開きます。今すぐ開く場合はTwitterで開くをクリックしてください</h2><ul><li><a href=" + url + ">Twitterで開く</a></li></ul>";
-var widget_str = "<blockquote class="twitter-tweet"><a href=" + url + "></a></blockquote>";
+var widget_str = "<a href=" + url + "></a>";
 //location.href=url;
 $("head").prepend(meta_str);
 $("body").prepend(body_str);
-$("div").prepend(widget_str);
+$("blockquote").prepend(widget_str);
 //console.log(url);
 // -->
 </script>
 </head>
-<body><div style="margin:0 auto;text-align:center;width:550px;">&nbsp;</div><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><br><a href="https://misskey.dev/" target="_blank">misskey.dev</a></body>
+<body><div style="margin:0 auto;text-align:center;width:550px;"><blockquote class="twitter-tweet">&nbsp;</blockquote></div><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><br><a href="https://misskey.dev/" target="_blank">misskey.dev</a></body>
 </html>
