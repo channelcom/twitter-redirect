@@ -33,32 +33,41 @@ li{padding:5px 0;}
 .ctr-p{min-width:0!important;}
 img{max-width:100%;height:auto;overflow:hidden;}</style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script type="text/javascript">
-<!--
-//パラメータ
-var params = location.href.split("status/")[1];
-//console.log(params);
-var path="https://twitter.com/i/status/";
-//var nitterpath="https://nitter.net/i/status/";
-var wapath="https://web.archive.org/web/*/https://twitter.com/i/status/";
-var home="https://misskey.dev/";
-var url;
-//var nitterurl;
-var waurl;
-if(typeof(params) != "undefined") { 
-  url = path + params;
-  //nitterurl = nitterpath + params;
-  waurl = wapath + params;
-}else{url=home;}
-var meta_str = "<link rel='canonical' href=" + url + "><meta http-equiv='refresh' content='30; URL=" + url + "'>";
-var body_str = "<h2>30秒後に自動的にTwitterで開きます。今すぐ開く場合はTwitterで開くをクリックしてください</h2><ul><li><a href=" + url + ">Twitterで開く</a></li></ul>";
-var widget_str = "<a href=" + url + "></a>";
-//location.href=url;
-$("head").prepend(meta_str);
-$("body").prepend(body_str);
-$("blockquote").prepend(widget_str);
-//console.log(url);
-// -->
+<script>
+    $(document).ready(function () {
+        let countdown = 30;
+        const path = "https://twitter.com/i/status/";
+        const wapath = "https://web.archive.org/web/*/https://twitter.com/i/status/";
+        const home = "https://misskey.dev/";
+        let url;
+
+        const params = location.href.split("status/")[1];
+        if (typeof(params) != "undefined") { 
+            url = path + params;
+            var waurl = wapath + params;
+        } else {
+            url = home;
+        }
+
+        const meta_str = "<link rel='canonical' href='" + url + "'><meta http-equiv='refresh' content='30; URL=" + url + "'>";
+        $("head").prepend(meta_str);
+
+        const body_str = `<h2><span id="countdown">${countdown}</span>秒後に自動的にTwitterで開きます。今すぐ開く場合は<a href="${url}" target="_blank">Twitterで開く</a>をクリックしてください。</h2>`;
+        $("body").prepend(body_str);
+
+        const widget_str = `<a href="${url}"></a>`;
+        $("blockquote").prepend(widget_str);
+
+        const countdownElement = document.getElementById("countdown");
+        const interval = setInterval(() => {
+            countdown--;
+            countdownElement.textContent = countdown;
+            if (countdown <= 0) {
+                clearInterval(interval);
+                window.location.href = url;
+            }
+        }, 1000);
+    });
 </script>
 </head>
 <body><div style="margin:0 auto;text-align:center;width:auto;min-width:320px;max-width:550px"><blockquote class="twitter-tweet">&nbsp;</blockquote></div><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><br><a href="https://misskey.dev/" target="_blank">misskey.dev</a></body>
