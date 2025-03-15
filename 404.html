@@ -1,7 +1,13 @@
 <!doctype html><html><head><!-- <meta http-equiv="refresh" content="5; url=https://twitter.com/"> -->
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="alternate", type="application/activity+json" href="https://twitter.misskey.dev/index.html" />
-<style type="text/css">body{font-family:"Yu Gothic",Meiryo;background-color:#0f0f0f;color:#ffffff;}
+<style type="text/css">@font-face {
+  font-family: TwitterChirp;
+  src: url(https://twitter.misskey.dev/fonts/Chirp-Medium.woff2) format('woff2'), url(https://twitter.misskey.dev/fonts/Chirp-Medium.woff) format('woff');
+  font-style: 'normal';
+  font-display: 'swap';
+}body{font-family:"Yu Gothic",Meiryo;background-color:#0f0f0f;color:#ffffff;}
+.twitter-font{font-family:TwitterChirp,"Yu Gothic",Meiryo;color:#aaf2ff;}
 .o{margin:0 auto;width:100%;max-width:720px;}
 #home .o{max-width:1920px;}
 .r{border:1px #efefef solid;border-radius:4px;}
@@ -52,7 +58,7 @@ img{max-width:100%;height:auto;overflow:hidden;}</style>
         const meta_str = "<link rel='canonical' href='" + url + "'><meta http-equiv='refresh' content='30; URL=" + url + "'>";
         $("head").prepend(meta_str);
 
-        const body_str = `<h2><span id="countdown">${countdown}</span>秒後に自動的にTwitterで開きます。今すぐ開く場合は<a href="${url}" target="_blank">Twitterで開く</a>をクリックしてください。</h2><ul><li><a href=" + url + ">Twitterで開く</a></li></ul>`;
+        const body_str = `<h2><span id="countdown">${countdown}</span>秒後に自動的にTwitterで開きます。今すぐ開く場合はTwitterで開くをクリックしてください。</h2><ul><li><a href="${url}" target="_blank"><span class="twitter-font"></span>Twitterで開く</a></li></ul>`;
         $("body").prepend(body_str);
 
         const widget_str = `<a href="${url}"></a>`;
