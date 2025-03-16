@@ -68,7 +68,7 @@ img{max-width:100%;height:auto;overflow:hidden;}</style>
             const metaStr = `<link rel="canonical" href="${url}"><meta http-equiv="refresh" content="${countdown}; URL=${url}">`;
             $("head").prepend(metaStr);
 
-            const body_str = `<h2><span id="countdown">${countdown}</span>秒後に自動的にTwitterで開きます。今すぐ開く場合はTwitterで開くをクリックしてください。</h2><ul><li><a href="${url}" target="_top"><span class="twitter-font"></span>Twitterで開く</a></li></ul>`;
+            const bodyStr = `<h2><span id="countdown">${countdown}</span>秒後に自動的にTwitterで開きます。今すぐ開く場合はTwitterで開くをクリックしてください。</h2><ul><li><a href="${url}" target="_top"><span class="twitter-font"></span>Twitterで開く</a></li></ul>`;
             $("body").prepend(bodyStr);
 
             const widgetStr = `<a href="${url}"></a>`;
