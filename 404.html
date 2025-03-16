@@ -57,13 +57,12 @@ img{max-width:100%;height:auto;overflow:hidden;}</style>
                 url = home;
             }
 
-            const storedCountdown = localStorage.getItem("countdown");
-            const lastTimestamp = localStorage.getItem("timestamp");
-            const currentTime = new Date().getTime();
+            const storedTimestamp = localStorage.getItem("timestamp");
+            const currentTime = Date.now();
 
-            if (storedCountdown && lastTimestamp) {
-                const elapsedTime = Math.floor((currentTime - lastTimestamp) / 1000);
-                countdown = Math.max(initialCountdown - elapsedTime, 0);
+            if (storedTimestamp) {
+                const elapsedSeconds = Math.floor((currentTime - storedTimestamp) / 1000);
+                countdown = Math.max(initialCountdown - elapsedSeconds, 0);
             }
 
             const metaStr = `<link rel="canonical" href="${url}"><meta http-equiv="refresh" content="${countdown}; URL=${url}">`;
@@ -77,14 +76,12 @@ img{max-width:100%;height:auto;overflow:hidden;}</style>
 
             const countdownElement = $("#countdown");
             const interval = setInterval(() => {
-                countdown--;
-                countdownElement.text(countdown);
-                localStorage.setItem("countdown", countdown);
-                localStorage.setItem("timestamp", new Date().getTime());
-
-                if (countdown <= 0) {
+                if (countdown > 0) {
+                    countdown--;
+                    countdownElement.text(countdown);
+                    localStorage.setItem("timestamp", Date.now());
+                } else {
                     clearInterval(interval);
-                    localStorage.removeItem("countdown");
                     localStorage.removeItem("timestamp");
                     window.location.href = url;
                 }
@@ -92,7 +89,6 @@ img{max-width:100%;height:auto;overflow:hidden;}</style>
 
             $(window).on("unload", function () {
                 if (countdown <= 0) {
-                    localStorage.removeItem("countdown");
                     localStorage.removeItem("timestamp");
                 }
             });
