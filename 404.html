@@ -40,7 +40,7 @@ li{padding:5px 0;}
 .ctr-p{min-width:0!important;}
 img{max-width:100%;height:auto;overflow:hidden;}</style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script>
+    <script>
         $(document).ready(function () {
             const initialCountdown = 30;
             const path = "https://twitter.com/i/status/";
@@ -87,7 +87,7 @@ img{max-width:100%;height:auto;overflow:hidden;}</style>
                 }
             }, 1000);
 
-            $(window).on("beforeunload", function () {
+            $(window).on("pagehide", function () {
                 if (countdown <= 0) {
                     localStorage.removeItem("timestamp");
                 }
