@@ -87,7 +87,7 @@ img{max-width:100%;height:auto;overflow:hidden;}</style>
                 }
             }, 1000);
 
-            $(window).on("unload", function () {
+            $(window).on("beforeunload", function () {
                 if (countdown <= 0) {
                     localStorage.removeItem("timestamp");
                 }
