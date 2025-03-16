@@ -65,10 +65,10 @@ img{max-width:100%;height:auto;overflow:hidden;}</style>
                 countdown = Math.max(initialCountdown - elapsedSeconds, 0);
             }
 
-            const metaStr = `<link rel="canonical" href="${url}"><meta http-equiv="refresh" content="${countdown}; URL=${url}">`;
+            const metaStr = `<link rel="canonical" href="${url}"><meta http-equiv="refresh" content="31; URL=${url}">`;
             $("head").prepend(metaStr);
 
-            const bodyStr = `<h2><span id="countdown">${countdown}</span>秒後に自動的にTwitterで開きます。今すぐ開く場合はTwitterで開くをクリックしてください。</h2><ul><li><a href="${url}" target="_top"><span class="twitter-font"></span>Twitterで開く</a></li></ul>`;
+            const bodyStr = `<h2><span id="countdown">${String(countdown).padStart(2, '0')}</span>秒後に自動的にTwitterで開きます。今すぐ開く場合はTwitterで開くをクリックしてください。</h2><ul><li><a href="${url}" target="_top"><span class="twitter-font"></span>Twitterで開く</a></li></ul>`;
             $("body").prepend(bodyStr);
 
             const widgetStr = `<a href="${url}"></a>`;
@@ -78,7 +78,7 @@ img{max-width:100%;height:auto;overflow:hidden;}</style>
             const interval = setInterval(() => {
                 if (countdown > 0) {
                     countdown--;
-                    countdownElement.text(countdown);
+                    countdownElement.text(String(countdown).padStart(2, '0'));
                     localStorage.setItem("timestamp", Date.now());
                 } else {
                     clearInterval(interval);
