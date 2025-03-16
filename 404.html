@@ -61,8 +61,8 @@ img{max-width:100%;height:auto;overflow:hidden;}</style>
             const currentTime = Date.now();
 
             if (storedTimestamp) {
-                const elapsedSeconds = Math.floor((currentTime - storedTimestamp) / 999);
-                countdown = Math.max(initialCountdown - elapsedSeconds, 0);
+                const elapsedSeconds = Math.floor((currentTime - storedTimestamp) / 1000);
+                countdown = Math.max(initialCountdown - elapsedSeconds, 1);
             }
 
             const metaStr = `<link rel="canonical" href="${url}"><meta http-equiv="refresh" content="30; URL=${url}">`;
