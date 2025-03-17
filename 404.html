@@ -40,7 +40,7 @@ li{padding:5px 0;}
 .ctr-p{min-width:0!important;}
 img{max-width:100%;height:auto;overflow:hidden;}</style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script>
+<script>
 $(document).ready(function () {
     const initialCountdown = 30; // 初期カウントダウン秒数
     const path = "https://twitter.com/i/status/";
@@ -59,57 +59,42 @@ $(document).ready(function () {
         url = home;
     }
 
-    // 履歴を考慮したタイムスタンプ処理
-    if (performance.navigation.type === performance.navigation.TYPE_BACK_FORWARD) {
-        // 戻る/進む操作時にタイムスタンプをクリアする
-        localStorage.removeItem("timestamp");
-    }
-
-    // タイムスタンプとカウントダウンの取得
-    const storedTimestamp = localStorage.getItem("timestamp");
-    const startTime = storedTimestamp ? parseInt(storedTimestamp, 10) : null;
-    const currentTime = Date.now();
-
-    if (startTime) {
-        const elapsedSeconds = Math.floor((currentTime - startTime) / 1000);
-        countdown = Math.max(initialCountdown - elapsedSeconds, 0);
-    } else {
-        localStorage.setItem("timestamp", currentTime);
-    }
+    // ページ読み込み時に新しいタイムスタンプを生成してリセット
+    const startTime = Date.now();
 
     // metaタグとリフレッシュ設定
-    const metaStr = `<link rel="canonical" href="${url}"><meta http-equiv="refresh" content="${countdown}; URL=${url}">`;
+    const metaStr = `<link rel="canonical" href="${url}"><meta http-equiv="refresh" content="${initialCountdown}; URL=${url}">`;
     $("head").prepend(metaStr);
 
     // カウントダウン表示
-    const bodyStr = `<h2><span id="countdown">${String(countdown).padStart(2, '0')}</span>秒後に自動的にTwitterで開きます。今すぐ開く場合は以下をクリックしてください。</h2>
+    const bodyStr = `<h2><span id="countdown">${String(initialCountdown).padStart(2, '0')}</span>秒後に自動的にTwitterで開きます。今すぐ開く場合は以下をクリックしてください。</h2>
     <ul>
         <li><a href="${url}" target="_top"><span class="twitter-font"></span>Twitterで開く</a></li>
+        <li><a href="${waurl}" target="_top">Webアーカイブで開く</a></li>
+        <li><a href="${home}" target="_top">Misskeyに戻る</a></li>
     </ul>`;
     $("body").prepend(bodyStr);
+
+    // ウィジェットの追加
+    const widgetStr = `<a href="${url}"></a>`;
+    $("blockquote").prepend(widgetStr);
 
     // カウントダウンのインターバル処理
     const countdownElement = $("#countdown");
     const interval = setInterval(() => {
+        const currentTime = Date.now();
+        const elapsedSeconds = Math.floor((currentTime - startTime) / 1000); // 経過時間を計算
+        countdown = Math.max(initialCountdown - elapsedSeconds, 0);
+
         if (countdown > 0) {
-            countdown--;
             countdownElement.text(String(countdown).padStart(2, '0'));
         } else {
             clearInterval(interval);
-            localStorage.removeItem("timestamp");
             window.location.href = url;
         }
     }, 1000);
-
-    // ページを閉じた場合のタイムスタンプ削除処理
-    $(window).on("pagehide", function () {
-        if (countdown <= 0) {
-            localStorage.removeItem("timestamp");
-        }
-    });
 });
-
-    </script>
+</script>
 </head>
 <body><div style="margin:0 auto;text-align:center;width:auto;min-width:320px;max-width:550px"><blockquote class="twitter-tweet">&nbsp;</blockquote></div><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><br><a href="https://misskey.dev/" target="_blank">misskey.dev</a></body>
 </html>
