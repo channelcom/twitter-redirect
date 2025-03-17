@@ -70,8 +70,6 @@ $(document).ready(function () {
     const bodyStr = `<h2><span id="countdown">${String(initialCountdown).padStart(2, '0')}</span>秒後に自動的にTwitterで開きます。今すぐ開く場合は以下をクリックしてください。</h2>
     <ul>
         <li><a href="${url}" target="_top"><span class="twitter-font"></span>Twitterで開く</a></li>
-        <li><a href="${waurl}" target="_top">Webアーカイブで開く</a></li>
-        <li><a href="${home}" target="_top">Misskeyに戻る</a></li>
     </ul>`;
     $("body").prepend(bodyStr);
 
